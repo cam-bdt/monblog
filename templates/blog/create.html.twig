@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% form_theme formArticle 'bootstrap_4_layout.html.twig' %}
+
+{% block body %} 
+<h1> {{titre}}</h1>
+
+{{ form_start(formArticle) }}
+
+
+{{ form_row(formArticle.title, {'attr' : {'placeHolder' : "Titre de l'article"} } ) }}
+ 
+{{ form_row(formArticle.category) }}
+
+{{ form_row(formArticle.content, {'attr' : {'placeHolder' : "Description de l'article" }} ) }}
+
+{{ form_row(formArticle.image, {'attr' : { 'placeHolder' : "Lien de l'image"}} ) }}
+
+<button type="submit" class ="btn btn-success">
+ {% if editMode == true %}
+
+Mettre à jour l'article
+
+{% else %}
+
+
+Ajouter l'article 
+
+{% endif %}
+
+</button>
+
+
+{{ form_end(formArticle) }}
+
+
+
+{% endblock %}
