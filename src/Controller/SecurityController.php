@@ -11,6 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
 
 class SecurityController extends AbstractController
 {
@@ -55,9 +57,17 @@ class SecurityController extends AbstractController
     }
 
     /** 
-    * @Route("/connexion", name="connexion")
+    * @Route("/connexion", name="app_login")
     */
-    public function connexion(){
-        return $this->render('security/connexion.html.twig');
+    public function login(AuthenticationUtils $authenticationUtils): Response {
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('security/connexion.html.twig', [
+            'last_username' => $lastUsername,
+            'error' => $error
+        ]);
     }
 }
