@@ -80,7 +80,7 @@ class BlogController extends AbstractController
             return  $this->redirectToRoute('show', ['id' => $article -> getId()]);
         }
 
-        return $this->render('blog/create.html.twig', [
+        return $this-> render('blog/create.html.twig', [
             'formArticle' => $form->createView(),
             'titre' => "coucou",
             'editMode' => $article -> getId() !==null
