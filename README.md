@@ -1,3 +1,3 @@
 # monblog
 
-Blog réalisé grâce au framework de php, symfony 4
+Blog réalisé grâce au framework de php, symfony 4.
